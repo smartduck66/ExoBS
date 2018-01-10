@@ -1,0 +1,55 @@
+//
+// Exercice N°13 page 300 - Chapitre 8
+// Taille d'éléments de vecteurs
+// "Programming -- Principles and Practice Using C++" by Bjarne Stroustrup
+
+
+#include "std_lib_facilities.h"
+
+// Caractères spéciaux : [ ]   '\n'   {  }   ||    Bool : 0 Faux 1 Vrai
+// CTRL D termine la saisie dans cin
+
+
+void trouver_taille(vector <string>& v1, vector <int>& v2, int& x, int&y ){
+    
+    
+    // On affecte les tailles au vecteur "taille"
+    for (int i=0;i<v1.size();i++){
+        int taille_nom=static_cast<int>(v1[i].size());
+        
+        if (i==0){x= taille_nom;y=taille_nom; }
+        if (i>0)
+        {
+            if (taille_nom<x){x= taille_nom;}
+            if (taille_nom>y){y= taille_nom;}
+            
+            }
+        
+        v2[i]= taille_nom;
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+int main()
+{
+    
+    vector <string> name={"andrewa", "marc","julien", "ewen","charles","maurienne","jean-étienne","marguerite","fleur","luc"};
+   
+    vector <int>taille(name.size());
+    int min=0;
+    int max=0;
+    trouver_taille(name,taille,min, max);
+
+    // On affiche les tailles
+    for (int i=0;i<taille.size();i++)
+        cout << name[i]<<" : "<<taille[i]<<'\n';
+    
+    // On affiche la plus grande taille et la moins grande taille
+    cout << "Taille minimale : "<<min<<"   Taille maximale: "<<max<<'\n';
+    
+    // First & last string alphabétiquement
+    sort(name.begin(),name.end());
+    cout <<"1er nom dans l'ordre alphabétique : "<<name[0]<<"   Dernier nom : "<<name[static_cast<int>(name.size()-1)]<<'\n';
+    
+
+}
